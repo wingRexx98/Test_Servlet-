@@ -14,4 +14,6 @@ public interface UserActionDAO {
 	public boolean deleteUser(int userId) throws SQLException;
 
 	public List<UserInfo> allUserInfo() throws SQLException;
+	
+	public UserInfo findUser(int userId) throws SQLException;
 }

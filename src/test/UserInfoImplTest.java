@@ -24,7 +24,7 @@ class UserInfoImplTest {
 //		boolean actual = userAction.addNewUser(user);
 //		assertEquals(expResult, actual);
 //	}
-	
+
 //	@Test
 //	void testUpdateNewUser() throws SQLException, ParseException {
 //		UserInfo user = new UserInfo(7, "cacy", "c", "c", "c", "2002-10-18");
@@ -44,13 +44,12 @@ class UserInfoImplTest {
 //		boolean actual = userAction.deleteUser(id);
 //		assertEquals(expResult, actual);
 //	}
-	
-	@Test
-	void testListNewUser() throws SQLException, ParseException {
-		UserActionDAO userAction = new UserActionDAOImpl();
-		
-		int expResult = 7;
-		int actual = userAction.allUserInfo().size();
-		assertEquals(expResult, actual);
-	}
+
+//	@Test
+//	void testListNewUser() throws SQLException, ParseException {
+//		UserActionDAO userAction = new UserActionDAOImpl();
+//		boolean expResult = true;
+//		boolean actual = userAction.findUser(3);
+//		assertEquals(expResult, actual);
+//	}
 }

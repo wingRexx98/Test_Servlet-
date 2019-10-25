@@ -57,8 +57,7 @@ public class UserActionDAOImpl implements UserActionDAO {
 			preStatement.setString(2, user.getUserEmail());
 			preStatement.setString(3, user.getUserPhone());
 			preStatement.setString(4, user.getUserAddress());
-			Date date = Date.valueOf(user.getUserDoB());
-			preStatement.setDate(5, date);
+			preStatement.setDate(5, Date.valueOf(user.getUserDoB()));
 			preStatement.setInt(6, user.getUserId());
 			check = preStatement.execute();
 		} finally {
@@ -119,6 +118,27 @@ public class UserActionDAOImpl implements UserActionDAO {
 			listOfUser.add(user);
 		}
 		return listOfUser;
+	}
+
+	@Override
+	public UserInfo findUser(int userId) throws SQLException {
+		UserInfo user = new UserInfo();
+		conn = DBConnection.getInstance().getConnection();
+		preStatement = conn.prepareStatement(SQLCommand.FIND);
+		preStatement.setInt(1, userId);
+		resultSet = preStatement.executeQuery();
+		while(resultSet.next()) {
+			user = new UserInfo();
+			user.setUserId(resultSet.getInt("userId"));
+			user.setUserName(resultSet.getString("userName"));
+			user.setUserEmail(resultSet.getString("userEmail"));
+			user.setUserPhone(resultSet.getString("userPhone"));
+			user.setUserAddress(resultSet.getString("userAddress"));
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			String date = df.format(resultSet.getDate("userDoB"));
+			user.setUserDoB(date);
+		}
+		return user;
 	}
 
 }
