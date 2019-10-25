@@ -9,8 +9,20 @@
 </head>
 <body>
 	<div align="center">
+		<%
+			String currentUser = (String) session.getAttribute("CurrentUser");
+			if (currentUser == null) {
+		%>Please Login First<%
+			response.sendRedirect("LoginPage.jsp");
+		%>
+		<form action="InsertServlet">
+			<input type="submit" name="Logout" value="Logout">
+		</form>
+		<%
+			} else {
+		%>
 		<h2>All users</h2>
-		<table border="1" cellpadding="5" cellspacing="1">
+		<table border="1">
 			<tr>
 				<th>User Id</th>
 				<th>Name</th>
@@ -30,11 +42,14 @@
 					<td>${user.userPhone}</td>
 					<td>${user.userAddress}</td>
 					<td>${user.userDoB}</td>
-					<td><a href="deleteServlet?code=${user.userId}">Delete</a></td>
-					<td><a href="updateServlet?code=${user.userId}">Update</a></td>
+					<td><a href="deleteServlet?userId=${user.userId}">Delete</a></td>
+					<td><a href="updateServlet?userId=${user.userId}">Update</a></td>
 				</tr>
 			</c:forEach>
 		</table>
+		<%
+			}
+		%>
 	</div>
 </body>
 </html>
