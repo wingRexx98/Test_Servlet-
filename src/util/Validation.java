@@ -4,11 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validation {
-	public boolean isValidPhone(String phone) {
-		Pattern pattern = Pattern.compile(Constrants.REGEX_PHONE_NUMBER);
-		Matcher matches = pattern.matcher(phone);
-		return matches.matches();
-	}
 
 	public boolean isValidEmail(String email) {
 		Pattern pattern = Pattern.compile(Constrants.REGEX_EMAIL);

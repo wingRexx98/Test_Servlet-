@@ -10,19 +10,13 @@
 	<div>
 		<%
 			String currentUser = (String) session.getAttribute("CurrentUser");
-			if (currentUser != null) {
 		%>
-		Welcome
-		<%=currentUser%><br>
+		Welcome <%=currentUser%><br> 
+		<a href="Insert.jsp">Insert new User</a>
+		| <a href="ShowAll.jsp">Show all user</a>
 		<form action="LogoutServlet">
 			<input type="submit" name="Logout" value="Logout">
 		</form>
-		<%
-			} else {
-		%>Please Login First<%
-			response.sendRedirect("LoginPage.jsp");
-			}
-		%>
 	</div>
 </body>
 </html>

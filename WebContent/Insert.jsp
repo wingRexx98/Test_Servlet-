@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Insert User</title>
 </head>
 <body>
 	<div>
@@ -13,23 +13,42 @@
 			if (currentUser == null) {
 		%>Please Login First<%
 			response.sendRedirect("LoginPage.jsp");
-			
 		%>
 		<form action="InsertServlet">
 			<input type="submit" name="Logout" value="Logout">
 		</form>
 		<%
 			} else {
-				%>
+		%>
+		<% String message = (String)request.getAttribute("alertMsg");%>
 		<form action="InsertServlet">
-			User name<br> <input type="text" name="userName"><br>
-			User Email<br> <input type="text" name="userEmail"><br>
-			User Address<br> <input type="text" name="userAddress"><br>
-			User Phone<br> <input type="text" name="userPhone"><br>
-			Date of Birth<br> <input type="date-local" name="userDoB"><br>
-
-			<input type="submit" name="Logout" value="Logout">
+			<h2>Insert new user information</h2>
+			User name<br> 
+			<input type="text"
+				pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" required
+				name="name"><br>
+				
+			User Email<br>
+			<input
+				type="email"
+				pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+				required name="email"><br>
+				
+			User Address<br> 
+			<input type="text" required name="address"><br>
+			
+			User Phone<br>
+			<input type="tel" pattern="^//d{9}*$" required
+				name="phone"><br>
+				
+			Date of Birth<br>
+			<input type="date" required name="date"><br>
+			
+			<input type="submit" name="Insert" value="Insert" >
 		</form>
+		<%
+			}
+		%>
 	</div>
 </body>
 </html>
