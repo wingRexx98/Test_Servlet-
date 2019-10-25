@@ -13,7 +13,7 @@
 		%>
 		Welcome <%=currentUser%><br> 
 		<a href="Insert.jsp">Insert new User</a>
-		| <a href="ShowAll.jsp">Show all user</a>
+		| <a href="ShowAllServlet">Show all user</a>
 		<form action="LogoutServlet">
 			<input type="submit" name="Logout" value="Logout">
 		</form>

@@ -49,7 +49,7 @@ class UserInfoImplTest {
 	void testListNewUser() throws SQLException, ParseException {
 		UserActionDAO userAction = new UserActionDAOImpl();
 		
-		int expResult = 6;
+		int expResult = 7;
 		int actual = userAction.allUserInfo().size();
 		assertEquals(expResult, actual);
 	}

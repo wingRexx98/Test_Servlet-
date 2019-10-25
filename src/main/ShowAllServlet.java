@@ -2,9 +2,9 @@ package main;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +35,7 @@ public class ShowAllServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserActionDAO userActionDAO = new UserActionDAOImpl();
 		String error = null;
-		List<UserInfo> listOfUsers = new ArrayList<>();
+		List<UserInfo> listOfUsers = null;
 		try {
 			listOfUsers = userActionDAO.allUserInfo();
 		} catch (SQLException e) {
@@ -44,7 +44,10 @@ public class ShowAllServlet extends HttpServlet {
 			error = e.getMessage();
 		}
 		request.setAttribute("Error", error);
-		request.setAttribute("UserList", listOfUsers);
+		request.setAttribute("ShowAllServlet", listOfUsers);
+		//redirect to the show all page
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/ShowAll.jsp");
+        dispatcher.forward(request, response);
 	}
 
 	/**

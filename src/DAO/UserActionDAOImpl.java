@@ -116,6 +116,7 @@ public class UserActionDAOImpl implements UserActionDAO {
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			String date = df.format(resultSet.getDate("userDoB"));
 			user.setUserDoB(date);
+			listOfUser.add(user);
 		}
 		return listOfUser;
 	}
