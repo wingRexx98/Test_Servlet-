@@ -7,6 +7,8 @@
 <title>Update User</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/view/_header.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/view/_menu.jsp"></jsp:include>
 	<div>
 		<%
 			String currentUser = (String) session.getAttribute("CurrentUser");
@@ -45,8 +47,8 @@
 					<td><input type="text" name="date" required value="" /></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="Submit" /> <a
-						href="${pageContext.request.contextPath}/productList">Cancel</a></td>
+					<td colspan="2"><input type="submit" value="Submit" />
+					<a href="ShowAllServlet">Cancel</a></td>
 				</tr>
 			</table>
 		</form>
@@ -54,5 +56,6 @@
 			}
 		%>
 	</div>
+	<jsp:include page="/WEB-INF/view/_footer.jsp"></jsp:include>
 </body>
 </html>

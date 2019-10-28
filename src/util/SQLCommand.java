@@ -8,4 +8,5 @@ public class SQLCommand {
 	public static final String SELECT = "SELECT * FROM UserInfo";
 	public static final String FIND = "SELECT * FROM UserInfo WHERE userId = ?";
 	public static final String LOGIN = "SELECT * FROM AdminLogIn WHERE loginName = ? && adminPassword = ?";
+	public static final String FIND_ADMIN = "SELECT * FROM UserInfo WHERE loginName = ?";
 }

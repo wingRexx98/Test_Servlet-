@@ -13,14 +13,11 @@
 			if (currentUser == null) {
 		%>Please Login First<%
 			response.sendRedirect("LoginPage.jsp");
-		%>
-		<form action="InsertServlet">
-			<input type="submit" name="Logout" value="Logout">
-		</form>
-		<%
 			} else {
 		%>
 		<% String message = (String)request.getAttribute("alertMsg");%>
+	 <jsp:include page="/WEB-INF/view/_header.jsp"></jsp:include>
+     <jsp:include page="/WEB-INF/view/_menu.jsp"></jsp:include>
 		<form action="InsertServlet">
 			<h2>Insert new user information</h2>
 			User name<br> 
@@ -49,6 +46,7 @@
 		<%
 			}
 		%>
+		<jsp:include page="/WEB-INF/view/_footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

@@ -159,4 +159,20 @@ public class UserActionDAOImpl implements UserActionDAO {
 		return admin;
 	}
 
+	@Override
+	public Admin findAdmin(String userName) throws SQLException {
+		Admin admin = null;
+		conn = DBConnection.getInstance().getConnection();
+		preStatement = conn.prepareStatement(SQLCommand.FIND_ADMIN);
+		preStatement.setString(1, userName);
+		resultSet = preStatement.executeQuery();
+		while(resultSet.next()) {
+			admin = new Admin();
+			admin.setAdminName(resultSet.getString("adminName"));
+			admin.setUserName(resultSet.getString("loginName"));
+			admin.setPassword(resultSet.getString("adminPassword"));
+		}
+		return admin;
+	}
+
 }

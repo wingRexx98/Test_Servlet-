@@ -19,4 +19,6 @@ public interface UserActionDAO {
 	public UserInfo findUser(int userId) throws SQLException;
 	
 	public Admin loginAdmin(String userName, String password) throws SQLException;
+	
+	public Admin findAdmin(String userName) throws SQLException;
 }

@@ -39,7 +39,8 @@ public class updateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		userId = Integer.parseInt(request.getParameter("userId"));
-		request.setAttribute("UpdateServlet", userId);
+		user = getUser(request);
+		request.setAttribute("UpdateServlet", user);
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/Update.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -55,6 +56,7 @@ public class updateServlet extends HttpServlet {
 		try {
 			user = getUserFromInput(request, userId);
 			userActionDAO.updateUser(user);
+			response.sendRedirect("ShowAllServlet");
 		} catch (SQLException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,6 +66,16 @@ public class updateServlet extends HttpServlet {
 	public UserInfo getUserFromInput(HttpServletRequest request, int userId) throws ServletException {
 		UserInfo user = new UserInfo();
 		user.setUserId(userId);
+		user.setUserName(request.getParameter("name"));
+		user.setUserEmail(request.getParameter("email"));
+		user.setUserAddress(request.getParameter("address"));
+		user.setUserPhone(request.getParameter("phone"));
+		user.setUserDoB(request.getParameter("date"));
+		return user;
+	}
+	
+	public UserInfo getUser(HttpServletRequest request) throws ServletException {
+		UserInfo user = new UserInfo();
 		user.setUserName(request.getParameter("name"));
 		user.setUserEmail(request.getParameter("email"));
 		user.setUserAddress(request.getParameter("address"));

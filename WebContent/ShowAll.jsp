@@ -8,6 +8,8 @@
 <title>List of Users</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/view/_header.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/view/_menu.jsp"></jsp:include>
 	<div align="center">
 		<%
 			String currentUser = (String) session.getAttribute("CurrentUser");
@@ -51,5 +53,6 @@
 			}
 		%>
 	</div>
+	<jsp:include page="/WEB-INF/view/_footer.jsp"></jsp:include>
 </body>
 </html>

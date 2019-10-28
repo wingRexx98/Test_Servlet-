@@ -7,8 +7,10 @@
 <title>Logout</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/view/_header.jsp"></jsp:include>
 	Logout complete
 	<br>
-	<a href="LoginPage.jsp">Go back to login page</a>
+	<a href="Home.jsp">Go back to Home page</a>
+	<jsp:include page="/WEB-INF/view/_footer.jsp"></jsp:include>
 </body>
 </html>

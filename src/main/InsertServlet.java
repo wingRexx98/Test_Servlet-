@@ -40,10 +40,10 @@ public class InsertServlet extends HttpServlet {
 		UserActionDAO userActionDAO = new UserActionDAOImpl();
 		try {
 			userActionDAO.addNewUser(user);
+			response.sendRedirect("ShowAllServlet");
 		} catch (SQLException | ParseException e) {
 			e.printStackTrace();
 			e.getCause();
-			response.sendRedirect("");
 		}
 	}
 
