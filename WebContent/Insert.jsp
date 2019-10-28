@@ -18,36 +18,63 @@
 		<% String message = (String)request.getAttribute("alertMsg");%>
 	 <jsp:include page="/WEB-INF/view/_header.jsp"></jsp:include>
      <jsp:include page="/WEB-INF/view/_menu.jsp"></jsp:include>
+     <div class="container">
+		<div class="card card-login mx-auto mt-5">
+		<div class="card-header">Insert new user</div>
+		<div class="card-body">
 		<form action="InsertServlet">
-			<h2>Insert new user information</h2>
-			User name<br> 
-			<input type="text"
+			<div class="input-group input-group-sm mb-3">
+  			<div class="input-group-prepend">
+    			<span class="input-group-text" id="inputGroup-sizing-sm">User's name</span>
+  			</div>
+  			<input type="text"
 				pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" required
-				name="name"><br>
-				
-			User Email<br>
-			<input
-				type="email"
+				name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			</div>
+			
+			<div class="input-group input-group-sm mb-3">
+  			<div class="input-group-prepend">
+    			<span class="input-group-text" id="inputGroup-sizing-sm">User's Email</span>
+  			</div>
+  			<input type="email"
 				pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-				required name="email"><br>
-				
-			User Address<br> 
-			<input type="text" required name="address"><br>
+				required name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			</div>
 			
-			User Phone<br>
-			<input type="tel" pattern="^//d{9}*$" required
-				name="phone"><br>
-				
-			Date of Birth<br>
-			<input type="date" required name="date"><br>
+			<div class="input-group input-group-sm mb-3">
+  			<div class="input-group-prepend">
+    			<span class="input-group-text" id="inputGroup-sizing-sm">User's Address</span>
+  			</div>
+  			<input type="text" required name="address" name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			</div>
 			
-			<input type="submit" name="Insert" value="Insert" >
-			<a href="ShowAllServlet">Cancel</a>
+			<div class="input-group input-group-sm mb-3">
+  			<div class="input-group-prepend">
+    			<span class="input-group-text" id="inputGroup-sizing-sm">User's Phone</span>
+  			</div>
+  			<input type="tel" pattern="^//d{9}*$" required
+				name="phone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			</div>
+				
+			<div class="input-group input-group-sm mb-3">
+  			<div class="input-group-prepend">
+    			<span class="input-group-text" id="inputGroup-sizing-sm">Date of Birth</span>
+  			</div>
+  			<input type="date" required name="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			</div>
+			
+			<div align="right">
+			<a class="btn btn-outline-primary"href="ShowAllServlet">Cancel</a>
+			<input type="submit" class="btn btn-outline-success" name="Insert" value="Insert" >
+			</div>
 		</form>
 		<%
 			}
 		%>
 		<jsp:include page="/WEB-INF/view/_footer.jsp"></jsp:include>
+		 </div>
+	</div>
+	</div>
 	</div>
 </body>
 </html>

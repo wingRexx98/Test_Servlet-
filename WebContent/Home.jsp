@@ -10,7 +10,7 @@
  
      <jsp:include page="/WEB-INF/view/_header.jsp"></jsp:include>
      <jsp:include page="/WEB-INF/view/_menu.jsp"></jsp:include>
-    
+    <div class="container">
       <h3>Home Page</h3>
       
       This is demo Simple web application using jsp,servlet &amp; Jdbc. <br><br>
@@ -25,6 +25,6 @@
       </ul>
  
      <jsp:include page="/WEB-INF/view/_footer.jsp"></jsp:include>
- 
+ 	</div>
   </body>
 </html>

@@ -1,6 +1,8 @@
 package main;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,9 +35,10 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Admin admin = new Admin();
+		UserActionDAO actionDAO = new UserActionDAOImpl();
+		String errorMessage = null;
 		try {
-			Admin admin = new Admin();
-			UserActionDAO actionDAO = new UserActionDAOImpl();
 
 			String userInputName = request.getParameter("userName");
 			String inputPassword = request.getParameter("password");
@@ -49,11 +52,20 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("Home.jsp");
 			}
 			else {
-				response.sendRedirect("InvalidLogin.jsp");
+//				response.sendRedirect("InvalidLogin.jsp");
+				errorMessage = "Incorrect username or password";
+				request.setAttribute("errorString", errorMessage);
+				RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/LoginPage.jsp");
+
+				dispatcher.forward(request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("The exception: " + e.getMessage());
+			errorMessage = "The exception: " + e.getMessage();
+			request.setAttribute("errorString", errorMessage);
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/LoginPage.jsp");
+
+			dispatcher.forward(request, response);
 		}
 	}
 

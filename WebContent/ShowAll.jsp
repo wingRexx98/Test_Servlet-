@@ -10,7 +10,7 @@
 <body>
 	<jsp:include page="/WEB-INF/view/_header.jsp"></jsp:include>
     <jsp:include page="/WEB-INF/view/_menu.jsp"></jsp:include>
-	<div align="center">
+	<div class="container" align="center">
 		<%
 			String currentUser = (String) session.getAttribute("CurrentUser");
 			if (currentUser == null) {
@@ -24,7 +24,7 @@
 			} else {
 		%>
 		<h2>All users</h2>
-		<table border="1">
+		<table class="table table-hover" border="1">
 			<tr>
 				<th>User Id</th>
 				<th>Name</th>
@@ -44,15 +44,15 @@
 					<td>${user.userPhone}</td>
 					<td>${user.userAddress}</td>
 					<td>${user.userDoB}</td>
-					<td><a href="deleteServlet?userId=${user.userId}">Delete</a></td>
-					<td><a href="updateServlet?userId=${user.userId}">Update</a></td>
+					<td><a class="btn btn-outline-danger" href="deleteServlet?userId=${user.userId}">Delete</a></td>
+					<td><a class="btn btn-outline-warning" href="updateServlet?userId=${user.userId}">Update</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 		<%
 			}
 		%>
-	</div>
 	<jsp:include page="/WEB-INF/view/_footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

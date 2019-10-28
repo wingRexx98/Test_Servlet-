@@ -10,6 +10,7 @@
 <body>
 	<jsp:include page="/WEB-INF/view/_header.jsp"></jsp:include>
     <jsp:include page="/WEB-INF/view/_menu.jsp"></jsp:include>
+	<div class="container">
 	<div>
 		<%
 			String currentUser = (String) session.getAttribute("CurrentUser");
@@ -19,7 +20,6 @@
 			} else {
 				String message = (String) request.getAttribute("alertMsg");
 		%>
-		
 		<form method="POST" action="updateServlet">
 			<h2>Update user information</h2>
 			<table border="0">
@@ -50,7 +50,7 @@
 				</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="2"><input type="submit" value="Submit" />
+					<td colspan="2"><input class="btn btn-outline-success" type="submit" value="Submit" />
 					<a href="ShowAllServlet">Cancel</a></td>
 				</tr>
 			</table>
@@ -60,5 +60,6 @@
 		%>
 	</div>
 	<jsp:include page="/WEB-INF/view/_footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

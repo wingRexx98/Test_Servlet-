@@ -8,9 +8,12 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/_header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/view/_menu.jsp"></jsp:include>
+	<div class="container">
 	Logout complete
 	<br>
 	<a href="Home.jsp">Go back to Home page</a>
 	<jsp:include page="/WEB-INF/view/_footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>
