@@ -42,6 +42,7 @@
 			<input type="date" required name="date"><br>
 			
 			<input type="submit" name="Insert" value="Insert" >
+			<a href="ShowAllServlet">Cancel</a>
 		</form>
 		<%
 			}

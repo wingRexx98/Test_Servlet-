@@ -13,7 +13,6 @@
 	<%
 		} else {
 	%><a href="LogoutServlet">Logout</a>
-	Welcome <b><%=currentUser%></b> <br />
 	<%
 		}
 	%>
