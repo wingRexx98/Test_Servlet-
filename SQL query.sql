@@ -8,3 +8,15 @@ CREATE TABLE UserInfo(
     userAddress	VARCHAR(100)	NOT NULL,
     userDoB		DATE			NOT NULL
 )
+
+CREATE TABLE AdminLogIn(
+	adminName		VARCHAR(50)		NOT NULL,
+    loginName		VARCHAR(50) 	NOT NULL UNIQUE,
+    adminPassword	VARCHAR(50)		NOT NULL UNIQUE,
+    PRIMARY KEY PK_Ad (loginName, adminPassword)
+)
+
+select * from AdminLogIn
+
+INSERT INTO AdminLogIn values ('Tom', 'user1','123456')
+select * from  UserInfo where userId = 3

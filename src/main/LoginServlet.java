@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.UserActionDAO;
+import DAO.UserActionDAOImpl;
+import Entity.Admin;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -30,16 +34,18 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			String userName = "user1";
-			String password = "123456";
+			Admin admin = new Admin();
+			UserActionDAO actionDAO = new UserActionDAOImpl();
 
 			String userInputName = request.getParameter("userName");
 			String inputPassword = request.getParameter("password");
 
-			if (userInputName.equals(userName) && inputPassword.equals(password)) {
+			admin = actionDAO.loginAdmin(userInputName, inputPassword);
+			if(admin != null)
+			{
 				HttpSession session = request.getSession(true);
 				//set the attribute to the session 
-				session.setAttribute("CurrentUser", userInputName);
+				session.setAttribute("CurrentUser", admin.getAdminName());
 				response.sendRedirect("LoggedIn.jsp");
 			}
 			else {

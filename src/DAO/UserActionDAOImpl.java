@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.util.List;
 import java.sql.PreparedStatement;
 
+import Entity.Admin;
 import Entity.UserInfo;
 import util.DBConnection;
 import util.SQLCommand;
@@ -139,6 +140,23 @@ public class UserActionDAOImpl implements UserActionDAO {
 			user.setUserDoB(date);
 		}
 		return user;
+	}
+
+	@Override
+	public Admin loginAdmin(String userName, String password) throws SQLException {
+		Admin admin = null;
+		conn = DBConnection.getInstance().getConnection();
+		preStatement = conn.prepareStatement(SQLCommand.LOGIN);
+		preStatement.setString(1, userName);
+		preStatement.setString(2, password);
+		resultSet = preStatement.executeQuery();
+		while(resultSet.next()) {
+			admin = new Admin();
+			admin.setAdminName(resultSet.getString("adminName"));
+			admin.setUserName(resultSet.getString("loginName"));
+			admin.setPassword(resultSet.getString("adminPassword"));
+		}
+		return admin;
 	}
 
 }
