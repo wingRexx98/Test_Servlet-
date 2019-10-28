@@ -3,6 +3,7 @@ package main;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,10 +40,18 @@ public class updateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		userId = Integer.parseInt(request.getParameter("userId"));
-		user = getUser(request);
-		request.setAttribute("UpdateServlet", user);
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/Update.jsp");
-		dispatcher.forward(request, response);
+		UserActionDAO userActionDAO = new UserActionDAOImpl();
+		String error = null;
+		List<UserInfo> listOfUsers = null;
+		try {
+			listOfUsers = userActionDAO.findUser(userId);
+			request.setAttribute("UpdateServlet", listOfUsers);
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/Update.jsp");
+			dispatcher.forward(request, response);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -66,16 +75,6 @@ public class updateServlet extends HttpServlet {
 	public UserInfo getUserFromInput(HttpServletRequest request, int userId) throws ServletException {
 		UserInfo user = new UserInfo();
 		user.setUserId(userId);
-		user.setUserName(request.getParameter("name"));
-		user.setUserEmail(request.getParameter("email"));
-		user.setUserAddress(request.getParameter("address"));
-		user.setUserPhone(request.getParameter("phone"));
-		user.setUserDoB(request.getParameter("date"));
-		return user;
-	}
-	
-	public UserInfo getUser(HttpServletRequest request) throws ServletException {
-		UserInfo user = new UserInfo();
 		user.setUserName(request.getParameter("name"));
 		user.setUserEmail(request.getParameter("email"));
 		user.setUserAddress(request.getParameter("address"));

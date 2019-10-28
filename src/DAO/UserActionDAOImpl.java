@@ -122,8 +122,9 @@ public class UserActionDAOImpl implements UserActionDAO {
 	}
 
 	@Override
-	public UserInfo findUser(int userId) throws SQLException {
+	public List<UserInfo> findUser(int userId) throws SQLException {
 		UserInfo user = new UserInfo();
+		List<UserInfo> listOfUser = new ArrayList<UserInfo>();
 		conn = DBConnection.getInstance().getConnection();
 		preStatement = conn.prepareStatement(SQLCommand.FIND);
 		preStatement.setInt(1, userId);
@@ -138,8 +139,9 @@ public class UserActionDAOImpl implements UserActionDAO {
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			String date = df.format(resultSet.getDate("userDoB"));
 			user.setUserDoB(date);
+			listOfUser.add(user);
 		}
-		return user;
+		return listOfUser;
 	}
 
 	@Override
