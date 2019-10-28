@@ -41,7 +41,6 @@ public class updateServlet extends HttpServlet {
 			throws ServletException, IOException {
 		userId = Integer.parseInt(request.getParameter("userId"));
 		UserActionDAO userActionDAO = new UserActionDAOImpl();
-		String error = null;
 		List<UserInfo> listOfUsers = null;
 		try {
 			listOfUsers = userActionDAO.findUser(userId);
